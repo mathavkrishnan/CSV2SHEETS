@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Web Page</title>
+</head>
+<body>
+  <form method="post" action="">
+    {% csrf_token %}
+    <div>
+    <h1>Choose columns to filter</h1>
+    {%for i in users %}
+        {%for j in i %}
+        {{forloop.parentloop.counter}}.
+    <select multiple name={{forloop.parentloop.counter}}>
+        {% for k in j %}
+        <option value="{{k}}">
+            <h2>{{k}}</h2>
+        </option>
+        {% endfor %}
+    </select>
+    <input type="checkbox" name={{forloop.parentloop.counter}}{{forloop.parentloop.counter}}[] id="check1">
+  <label for="check1">Missing data</label>
+  {% endfor %}
+  {%endfor%}
+</div>
+  <input type="submit" value="Submit"/>
+</form>
+
+</body>
+</html>
